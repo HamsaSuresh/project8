@@ -2,33 +2,47 @@ Program 4
 
 package com.example;
 
-public class App { public static void main(String[] args) { System.out.println("Hello, Maven"); System.out.println("This is the simple realworld example....");
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Hello, Maven");
+        System.out.println("This is the simple realworld example....");
 
-    int a = 5;
-    int b = 10;
-    System.out.println("Sum of " + a + " and " + b + " is " + sum(a, b));
+        int a = 5;
+        int b = 10;
+        System.out.println("Sum of " + a + " and " + b + " is " + sum(a, b));
+    }
+
+    public static int sum(int x, int y) {
+        return x + y;
+    }
 }
 
-public static int sum(int x, int y) {
-    return x + y;
-}
-}
-
-maven:- mvn clean install mvn exec:java -Dexec.mainClass="com.example.App"
+maven:- mvn clean install 
+mvn exec:java -Dexec.mainClass="com.example.App"
 
 gradle:-
 
 gradle init
 
-plugins { id 'java' }
+plugins {
+    id 'java'
+}
 
-group = 'com.example' version = '1.0-SNAPSHOT'
+group = 'com.example'
+version = '1.0-SNAPSHOT'
 
-repositories { mavenCentral() }
+repositories {
+    mavenCentral()
+}
 
-dependencies { testImplementation 'junit:junit:4.12' }
+dependencies {
+    testImplementation 'junit:junit:4.12'
+}
 
-task run(type: JavaExec) { main = 'com.example.App' classpath = sourceSets.main.runtimeClasspath }
+task run(type: JavaExec) {
+    main = 'com.example.App'
+    classpath = sourceSets.main.runtimeClasspath
+}
 
 gradlew build
 
